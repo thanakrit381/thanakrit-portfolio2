@@ -37,9 +37,9 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.5s' }}>
             <Button asChild size="xl" variant="hero">
-              <a href="#projects">
+              <a href="#internship">
                 <ExternalLink className="h-5 w-5" />
-                View Portfolio
+                Explore My Work
               </a>
             </Button>
             <Button asChild size="xl" variant="heroOutline">
@@ -63,4 +63,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
