@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Design System for Thanakrit Portfolio
+  - Editorial aesthetic with warm neutrals
+  - Refined teal accent
+  - Clean, sophisticated typography
+*/
+
+@layer base {
+  :root {
+    /* Warm stone background palette */
+    --background: 40 20% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 40 15% 97%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 40 20% 98%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Sophisticated teal accent */
+    --primary: 175 45% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm secondary tones */
+    --secondary: 35 25% 92%;
+    --secondary-foreground: 220 20% 15%;
+
+    --muted: 35 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Subtle accent for hover states */
+    --accent: 175 35% 92%;
+    --accent-foreground: 175 45% 30%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 175 45% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(40 20% 98%) 0%, hsl(35 25% 95%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(40 15% 99%) 0%, hsl(35 20% 96%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(175 45% 35%) 0%, hsl(180 50% 40%) 100%);
+    
+    --shadow-sm: 0 1px 2px 0 hsl(220 20% 10% / 0.03);
+    --shadow-card: 0 4px 20px -4px hsl(220 20% 10% / 0.08);
+    --shadow-elevated: 0 20px 50px -12px hsl(220 20% 10% / 0.15);
+    --shadow-glow: 0 0 40px hsl(175 45% 35% / 0.15);
+
+    /* Sidebar tokens */
+    --sidebar-background: 40 15% 97%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 175 45% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 175 35% 92%;
+    --sidebar-accent-foreground: 175 45% 30%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 175 45% 35%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 40 15% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 40 15% 95%;
+
+    --popover: 220 25% 8%;
+    --popover-foreground: 40 15% 95%;
+
+    --primary: 175 50% 45%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 15% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 175 30% 20%;
+    --accent-foreground: 175 50% 50%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 175 50% 45%;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 40 15% 95%;
+    --sidebar-primary: 175 50% 45%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 175 30% 20%;
+    --sidebar-accent-foreground: 175 50% 50%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 175 50% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero section styling */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Card with hover elevation */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-hover:hover {
+    box-shadow: var(--shadow-elevated);
+    @apply -translate-y-1;
+  }
+
+  /* Accent gradient background */
+  .accent-gradient {
+    background: var(--gradient-accent);
+  }
+
+  /* Subtle text gradient */
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative;
+  }
+  
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary origin-left scale-x-0 transition-transform duration-300;
+  }
+  
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Fade in animation */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 py-20 md:py-28;
+  }
+
+  /* Project card image overlay */
+  .project-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .group:hover .project-overlay {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
